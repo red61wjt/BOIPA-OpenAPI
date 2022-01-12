@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  version: 1.2.3
+  title: EVO Payments
+
+  
+servers:
+ - 
+  description: UAT
+  url: https://apiuat.test.boipapaymentgateway.com
+
+paths:  
+ /token:
+  post:
+    description: Fetch session token
+    requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/CaptureSessionToken'
+    responses:
+      '200':
+        description: Response
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/TokenResponseProcessed'
+                - $ref: '#/components/schemas/ResponseNotProcessed'
+          
+components:
+  schemas:
+    CaptureSessionToken:
+      title: Capture
+      type: object
+      required: 
+        - merchantId
+        - password
+        - action
+        - timestamp
+        - allowOriginUrl
+        - amount
+      properties:
+        merchantId:
+          type: integer
+        password:
+          type: string
+        action:
+          type: string
+          example: CAPTURE
+        timestamp:
+          type: integer
+        allowOriginUrl:
+          type: string
+        originalTxId:
+          type: string
+        originalMerchantTxId:
+          type: string
+        agentId:
+          type: string
+        amount:
+          type: number
+          format: double
+    TokenResponseProcessed:
+      title: Processed
+      type: object
+      properties:
+        result:
+          type: string
+          default: sucess
+        merchantId:
+          type: string
+        token:
+          type: string
+        resultId:
+          type: string
+        processingTime:
+          type: integer
+
+    ResponseNotProcessed:
+      title: NotProcessed
+      type: object
+      properties:
+        result:
+          type: string
+          default: failure
+        merchantId:
+          type: string
+        processingTime:
+          type: integer
+
