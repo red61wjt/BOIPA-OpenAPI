@@ -1,5 +1,6 @@
 #!/bin/bash -e
-docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+rm -rf clients
+docker run --user $UID --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
     -i /local/openapi.yaml \
     -g java \
     --library okhttp-gson \
@@ -7,8 +8,12 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
     --group-id com.evopayments \
     --api-package com.evopayments.api \
     --model-package com.evopayments.model \
-    -o /local/java
+    --additional-properties=disallowAdditionalPropertiesIfNotPresent=true \
+    -o /local/clients/java
     
-pushd java
+pushd clients/java
+mvn clean install
+popd
+pushd examples/java-client-example/
 mvn clean install
 popd
