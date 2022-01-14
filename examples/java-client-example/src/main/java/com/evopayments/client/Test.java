@@ -6,7 +6,8 @@
 package com.evopayments.client;
 
 import com.evopayments.ApiException;
-import com.evopayments.api.DefaultApi;
+import com.evopayments.api.PaymentApi;
+import com.evopayments.api.TokenApi;
 import com.evopayments.model.BaseResponse;
 import com.evopayments.model.ResponseNotProcessed;
 import com.evopayments.model.TokenResponseProcessed;
@@ -21,13 +22,19 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DefaultApi api = new DefaultApi();
+        TokenApi tokenApi = new TokenApi();
+        PaymentApi paymentApi = new PaymentApi();
+        Integer merchantId = 167885;
+        String password = "56789";
+        String action = "CAPTURE";
         try {
-            BaseResponse response = api.tokenPost(167885, "56789", "CAPTURE", 0, "*", 1.0, null, "test", null);
+            BaseResponse response = tokenApi.getSessionToken(merchantId, password, action , 0, "*", 1.0, null, "test", null);
             if(response instanceof TokenResponseProcessed) {
                 TokenResponseProcessed responseProcessed = (TokenResponseProcessed) response;
                 String token = responseProcessed.getToken();
                 System.out.println("Token: " + token);
+                
+                paymentApi.capturePayment(merchantId, token, action);
             }
             else {
                 ResponseNotProcessed responseNotProcessed = (ResponseNotProcessed) response;
