@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: EVO Payments
+  version: 1.2.3
+servers:
+- description: UAT
+  url: https://apiuat.test.boipapaymentgateway.com
+paths:
+  /token:
+    post:
+      description: Fetch session token
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CaptureSessionToken'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+          description: Response
+      x-contentType: application/x-www-form-urlencoded
+      x-accepts: application/json
+components:
+  schemas:
+    CaptureSessionToken:
+      properties:
+        merchantId:
+          example: 167885
+          type: integer
+        password:
+          example: "56789"
+          type: string
+        action:
+          example: CAPTURE
+          type: string
+        timestamp:
+          example: 0
+          type: integer
+        allowOriginUrl:
+          example: example.org
+          type: string
+        originalTxId:
+          type: string
+        originalMerchantTxId:
+          type: string
+        agentId:
+          type: string
+        amount:
+          example: 10.0
+          format: double
+          type: number
+      required:
+      - action
+      - allowOriginUrl
+      - amount
+      - merchantId
+      - password
+      - timestamp
+      title: Capture
+      type: object
+    FOOSessionToken:
+      properties:
+        merchantId:
+          example: 167885
+          type: integer
+        password:
+          example: "56789"
+          type: string
+        action:
+          example: FOO
+          type: string
+      required:
+      - action
+      - allowOriginUrl
+      - amount
+      - merchantId
+      - password
+      - timestamp
+      title: Capture
+      type: object
+    TokenResponseProcessed:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      properties:
+        merchantId:
+          type: string
+        token:
+          type: string
+        resultId:
+          type: string
+        processingTime:
+          type: integer
+      required:
+      - result
+      title: Processed
+      type: object
+    ResponseNotProcessed:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      properties:
+        merchantId:
+          type: string
+        processingTime:
+          type: integer
+      required:
+      - result
+      title: NotProcessed
+      type: object
+    BaseResponse:
+      discriminator:
+        mapping:
+          success: '#/components/schemas/TokenResponseProcessed'
+          failure: '#/components/schemas/ResponseNotProcessed'
+        propertyName: result
+      example:
+        result: result
+      properties:
+        result:
+          type: string
+      type: object
+
