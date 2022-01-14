@@ -6,7 +6,7 @@ servers:
 - description: UAT
   url: https://apiuat.test.boipapaymentgateway.com
 paths:
-  /payment:
+  /payments:
     post:
       description: Process payment
       operationId: capturePayment

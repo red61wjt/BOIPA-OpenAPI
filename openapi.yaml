@@ -10,7 +10,7 @@ servers:
   url: https://apiuat.test.boipapaymentgateway.com
 
 paths:
- /payment:
+ /payments:
   post:
     tags:
       - payment

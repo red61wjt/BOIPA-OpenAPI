@@ -324,7 +324,7 @@ class PaymentApi
             );
         }
 
-        $resourcePath = '/payment';
+        $resourcePath = '/payments';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

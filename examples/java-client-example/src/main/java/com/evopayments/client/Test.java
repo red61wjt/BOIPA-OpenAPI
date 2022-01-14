@@ -34,7 +34,15 @@ public class Test {
                 String token = responseProcessed.getToken();
                 System.out.println("Token: " + token);
                 
-                paymentApi.capturePayment(merchantId, token, action);
+                BaseResponse capturePaymentResponse = paymentApi.capturePayment(merchantId, token, action);
+                System.out.println("capturePaymentResponse: " + capturePaymentResponse.getClass().getName());
+                if(capturePaymentResponse instanceof ResponseNotProcessed) {
+                    ResponseNotProcessed notProcessed = (ResponseNotProcessed) capturePaymentResponse;
+                    System.err.println("ERROR: " + notProcessed);
+                }
+                else {
+                    // TODO:
+                }
             }
             else {
                 ResponseNotProcessed responseNotProcessed = (ResponseNotProcessed) response;

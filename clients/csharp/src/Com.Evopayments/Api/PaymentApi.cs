@@ -224,7 +224,7 @@ namespace Com.Evopayments.Api
             if (action == null)
                 throw new ApiException(400, "Missing required parameter 'action' when calling PaymentApi->CapturePayment");
 
-            var localVarPath = "/payment";
+            var localVarPath = "/payments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -306,7 +306,7 @@ namespace Com.Evopayments.Api
             if (action == null)
                 throw new ApiException(400, "Missing required parameter 'action' when calling PaymentApi->CapturePayment");
 
-            var localVarPath = "/payment";
+            var localVarPath = "/payments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

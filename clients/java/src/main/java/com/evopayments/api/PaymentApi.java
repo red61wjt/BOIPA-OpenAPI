@@ -104,7 +104,7 @@ public class PaymentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/payment";
+        String localVarPath = "/payments";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

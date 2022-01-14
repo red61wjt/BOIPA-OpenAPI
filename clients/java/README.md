@@ -116,7 +116,7 @@ All URIs are relative to *https://apiuat.test.boipapaymentgateway.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*PaymentApi* | [**capturePayment**](docs/PaymentApi.md#capturePayment) | **POST** /payment | 
+*PaymentApi* | [**capturePayment**](docs/PaymentApi.md#capturePayment) | **POST** /payments | 
 *TokenApi* | [**getSessionToken**](docs/TokenApi.md#getSessionToken) | **POST** /token | 
 
 

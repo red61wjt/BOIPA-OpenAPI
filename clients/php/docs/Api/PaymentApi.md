@@ -4,7 +4,7 @@ All URIs are relative to https://apiuat.test.boipapaymentgateway.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**capturePayment()**](PaymentApi.md#capturePayment) | **POST** /payment | 
+[**capturePayment()**](PaymentApi.md#capturePayment) | **POST** /payments | 
 
 
 ## `capturePayment()`
