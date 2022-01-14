@@ -28,13 +28,16 @@ public class Test {
         String password = "56789";
         String action = "CAPTURE";
         try {
-            BaseResponse response = tokenApi.getSessionToken(merchantId, password, action , 0, "*", 1.0, null, "test", null);
+            BaseResponse response = tokenApi.getSessionToken(merchantId, password, action, 0, "*", 1.0)
+                    .originalMerchantTxId("test") // example of optional param
+                    .execute();
             if(response instanceof TokenResponseProcessed) {
                 TokenResponseProcessed responseProcessed = (TokenResponseProcessed) response;
                 String token = responseProcessed.getToken();
                 System.out.println("Token: " + token);
                 
-                BaseResponse capturePaymentResponse = paymentApi.capturePayment(merchantId, token, action);
+                BaseResponse capturePaymentResponse = paymentApi.capturePayment(merchantId, token, action)
+                        .execute();
                 System.out.println("capturePaymentResponse: " + capturePaymentResponse.getClass().getName());
                 if(capturePaymentResponse instanceof ResponseNotProcessed) {
                     ResponseNotProcessed notProcessed = (ResponseNotProcessed) capturePaymentResponse;
