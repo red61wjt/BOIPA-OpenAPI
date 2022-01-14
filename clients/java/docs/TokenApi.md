@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getSessionToken"></a>
 # **getSessionToken**
-> BaseResponse getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId)
+> BaseResponse getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount).originalTxId(originalTxId).originalMerchantTxId(originalMerchantTxId).agentId(agentId).execute();
 
 
 
@@ -40,7 +40,11 @@ public class Example {
     String originalMerchantTxId = "originalMerchantTxId_example"; // String | 
     String agentId = "agentId_example"; // String | 
     try {
-      BaseResponse result = apiInstance.getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
+      BaseResponse result = apiInstance.getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount)
+            .originalTxId(originalTxId)
+            .originalMerchantTxId(originalMerchantTxId)
+            .agentId(agentId)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TokenApi#getSessionToken");

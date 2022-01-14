@@ -45,7 +45,8 @@ public class PaymentApiTest {
         Integer merchantId = null;
         String token = null;
         String action = null;
-                BaseResponse response = api.capturePayment(merchantId, token, action);
+                BaseResponse response = api.capturePayment(merchantId, token, action)
+                .execute();
         // TODO: test validations
     }
     

@@ -51,7 +51,11 @@ public class TokenApiTest {
         String originalTxId = null;
         String originalMerchantTxId = null;
         String agentId = null;
-                BaseResponse response = api.getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
+                BaseResponse response = api.getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount)
+                .originalTxId(originalTxId)
+                .originalMerchantTxId(originalMerchantTxId)
+                .agentId(agentId)
+                .execute();
         // TODO: test validations
     }
     

@@ -72,21 +72,7 @@ public class PaymentApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for capturePayment
-     * @param merchantId  (required)
-     * @param token  (required)
-     * @param action  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call capturePaymentCall(Integer merchantId, String token, String action, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call capturePaymentCall(Integer merchantId, String token, String action, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -168,65 +154,106 @@ public class PaymentApi {
 
     }
 
-    /**
-     * 
-     * Process payment
-     * @param merchantId  (required)
-     * @param token  (required)
-     * @param action  (required)
-     * @return BaseResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
-     </table>
-     */
-    public BaseResponse capturePayment(Integer merchantId, String token, String action) throws ApiException {
-        ApiResponse<BaseResponse> localVarResp = capturePaymentWithHttpInfo(merchantId, token, action);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * Process payment
-     * @param merchantId  (required)
-     * @param token  (required)
-     * @param action  (required)
-     * @return ApiResponse&lt;BaseResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BaseResponse> capturePaymentWithHttpInfo(Integer merchantId, String token, String action) throws ApiException {
+    private ApiResponse<BaseResponse> capturePaymentWithHttpInfo(Integer merchantId, String token, String action) throws ApiException {
         okhttp3.Call localVarCall = capturePaymentValidateBeforeCall(merchantId, token, action, null);
         Type localVarReturnType = new TypeToken<BaseResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call capturePaymentAsync(Integer merchantId, String token, String action, final ApiCallback<BaseResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = capturePaymentValidateBeforeCall(merchantId, token, action, _callback);
+        Type localVarReturnType = new TypeToken<BaseResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcapturePaymentRequest {
+        private final Integer merchantId;
+        private final String token;
+        private final String action;
+
+        private APIcapturePaymentRequest(Integer merchantId, String token, String action) {
+            this.merchantId = merchantId;
+            this.token = token;
+            this.action = action;
+        }
+
+        /**
+         * Build call for capturePayment
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return capturePaymentCall(merchantId, token, action, _callback);
+        }
+
+        /**
+         * Execute capturePayment request
+         * @return BaseResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BaseResponse execute() throws ApiException {
+            ApiResponse<BaseResponse> localVarResp = capturePaymentWithHttpInfo(merchantId, token, action);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute capturePayment request with HTTP info returned
+         * @return ApiResponse&lt;BaseResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BaseResponse> executeWithHttpInfo() throws ApiException {
+            return capturePaymentWithHttpInfo(merchantId, token, action);
+        }
+
+        /**
+         * Execute capturePayment request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BaseResponse> _callback) throws ApiException {
+            return capturePaymentAsync(merchantId, token, action, _callback);
+        }
+    }
+
     /**
-     *  (asynchronously)
+     * 
      * Process payment
      * @param merchantId  (required)
      * @param token  (required)
      * @param action  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIcapturePaymentRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call capturePaymentAsync(Integer merchantId, String token, String action, final ApiCallback<BaseResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = capturePaymentValidateBeforeCall(merchantId, token, action, _callback);
-        Type localVarReturnType = new TypeToken<BaseResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIcapturePaymentRequest capturePayment(Integer merchantId, String token, String action) {
+        return new APIcapturePaymentRequest(merchantId, token, action);
     }
 }

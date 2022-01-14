@@ -142,4 +142,5 @@ components:
         result:
           type: string
       type: object
+x-group-parameters: true
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="capturePayment"></a>
 # **capturePayment**
-> BaseResponse capturePayment(merchantId, token, action)
+> BaseResponse capturePayment(merchantId, token, action).execute();
 
 
 
@@ -34,7 +34,8 @@ public class Example {
     String token = "token_example"; // String | 
     String action = "action_example"; // String | 
     try {
-      BaseResponse result = apiInstance.capturePayment(merchantId, token, action);
+      BaseResponse result = apiInstance.capturePayment(merchantId, token, action)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentApi#capturePayment");

@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * TokenResponseProcessed
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-01-14T14:29:03.106480Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-01-14T16:20:51.784655Z[Etc/UTC]")
 public class TokenResponseProcessed extends BaseResponse {
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
