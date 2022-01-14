@@ -35,16 +35,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultApi {
+public class TokenApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public DefaultApi() {
+    public TokenApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public DefaultApi(ApiClient apiClient) {
+    public TokenApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -73,7 +73,7 @@ public class DefaultApi {
     }
 
     /**
-     * Build call for tokenPost
+     * Build call for getSessionToken
      * @param merchantId  (required)
      * @param password  (required)
      * @param action  (required)
@@ -92,7 +92,7 @@ public class DefaultApi {
         <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call tokenPostCall(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSessionTokenCall(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -175,40 +175,40 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call tokenPostValidateBeforeCall(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSessionTokenValidateBeforeCall(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'merchantId' is set
         if (merchantId == null) {
-            throw new ApiException("Missing the required parameter 'merchantId' when calling tokenPost(Async)");
+            throw new ApiException("Missing the required parameter 'merchantId' when calling getSessionToken(Async)");
         }
         
         // verify the required parameter 'password' is set
         if (password == null) {
-            throw new ApiException("Missing the required parameter 'password' when calling tokenPost(Async)");
+            throw new ApiException("Missing the required parameter 'password' when calling getSessionToken(Async)");
         }
         
         // verify the required parameter 'action' is set
         if (action == null) {
-            throw new ApiException("Missing the required parameter 'action' when calling tokenPost(Async)");
+            throw new ApiException("Missing the required parameter 'action' when calling getSessionToken(Async)");
         }
         
         // verify the required parameter 'timestamp' is set
         if (timestamp == null) {
-            throw new ApiException("Missing the required parameter 'timestamp' when calling tokenPost(Async)");
+            throw new ApiException("Missing the required parameter 'timestamp' when calling getSessionToken(Async)");
         }
         
         // verify the required parameter 'allowOriginUrl' is set
         if (allowOriginUrl == null) {
-            throw new ApiException("Missing the required parameter 'allowOriginUrl' when calling tokenPost(Async)");
+            throw new ApiException("Missing the required parameter 'allowOriginUrl' when calling getSessionToken(Async)");
         }
         
         // verify the required parameter 'amount' is set
         if (amount == null) {
-            throw new ApiException("Missing the required parameter 'amount' when calling tokenPost(Async)");
+            throw new ApiException("Missing the required parameter 'amount' when calling getSessionToken(Async)");
         }
         
 
-        okhttp3.Call localVarCall = tokenPostCall(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId, _callback);
+        okhttp3.Call localVarCall = getSessionTokenCall(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId, _callback);
         return localVarCall;
 
     }
@@ -233,8 +233,8 @@ public class DefaultApi {
         <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
      </table>
      */
-    public BaseResponse tokenPost(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId) throws ApiException {
-        ApiResponse<BaseResponse> localVarResp = tokenPostWithHttpInfo(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
+    public BaseResponse getSessionToken(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId) throws ApiException {
+        ApiResponse<BaseResponse> localVarResp = getSessionTokenWithHttpInfo(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
         return localVarResp.getData();
     }
 
@@ -258,8 +258,8 @@ public class DefaultApi {
         <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BaseResponse> tokenPostWithHttpInfo(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId) throws ApiException {
-        okhttp3.Call localVarCall = tokenPostValidateBeforeCall(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId, null);
+    public ApiResponse<BaseResponse> getSessionTokenWithHttpInfo(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId) throws ApiException {
+        okhttp3.Call localVarCall = getSessionTokenValidateBeforeCall(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId, null);
         Type localVarReturnType = new TypeToken<BaseResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -285,9 +285,9 @@ public class DefaultApi {
         <tr><td> 200 </td><td> Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call tokenPostAsync(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId, final ApiCallback<BaseResponse> _callback) throws ApiException {
+    public okhttp3.Call getSessionTokenAsync(Integer merchantId, String password, String action, Integer timestamp, String allowOriginUrl, Double amount, String originalTxId, String originalMerchantTxId, String agentId, final ApiCallback<BaseResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = tokenPostValidateBeforeCall(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId, _callback);
+        okhttp3.Call localVarCall = getSessionTokenValidateBeforeCall(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId, _callback);
         Type localVarReturnType = new TypeToken<BaseResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

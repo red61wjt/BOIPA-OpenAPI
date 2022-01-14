@@ -24,12 +24,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for DefaultApi
+ * API tests for TokenApi
  */
 @Ignore
-public class DefaultApiTest {
+public class TokenApiTest {
 
-    private final DefaultApi api = new DefaultApi();
+    private final TokenApi api = new TokenApi();
 
     
     /**
@@ -41,7 +41,7 @@ public class DefaultApiTest {
      *          if the Api call fails
      */
     @Test
-    public void tokenPostTest() throws ApiException {
+    public void getSessionTokenTest() throws ApiException {
         Integer merchantId = null;
         String password = null;
         String action = null;
@@ -51,7 +51,7 @@ public class DefaultApiTest {
         String originalTxId = null;
         String originalMerchantTxId = null;
         String agentId = null;
-                BaseResponse response = api.tokenPost(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
+                BaseResponse response = api.getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
         // TODO: test validations
     }
     

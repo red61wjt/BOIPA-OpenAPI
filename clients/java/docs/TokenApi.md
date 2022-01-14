@@ -1,15 +1,15 @@
-# DefaultApi
+# TokenApi
 
 All URIs are relative to *https://apiuat.test.boipapaymentgateway.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**tokenPost**](DefaultApi.md#tokenPost) | **POST** /token | 
+[**getSessionToken**](TokenApi.md#getSessionToken) | **POST** /token | 
 
 
-<a name="tokenPost"></a>
-# **tokenPost**
-> BaseResponse tokenPost(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId)
+<a name="getSessionToken"></a>
+# **getSessionToken**
+> BaseResponse getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId)
 
 
 
@@ -22,14 +22,14 @@ import com.evopayments.ApiClient;
 import com.evopayments.ApiException;
 import com.evopayments.Configuration;
 import com.evopayments.models.*;
-import com.evopayments.api.DefaultApi;
+import com.evopayments.api.TokenApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://apiuat.test.boipapaymentgateway.com");
 
-    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    TokenApi apiInstance = new TokenApi(defaultClient);
     Integer merchantId = 56; // Integer | 
     String password = "password_example"; // String | 
     String action = "action_example"; // String | 
@@ -40,10 +40,10 @@ public class Example {
     String originalMerchantTxId = "originalMerchantTxId_example"; // String | 
     String agentId = "agentId_example"; // String | 
     try {
-      BaseResponse result = apiInstance.tokenPost(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
+      BaseResponse result = apiInstance.getSessionToken(merchantId, password, action, timestamp, allowOriginUrl, amount, originalTxId, originalMerchantTxId, agentId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#tokenPost");
+      System.err.println("Exception when calling TokenApi#getSessionToken");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

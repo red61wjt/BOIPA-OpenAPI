@@ -6,9 +6,30 @@ servers:
 - description: UAT
   url: https://apiuat.test.boipapaymentgateway.com
 paths:
+  /payment:
+    post:
+      description: Process payment
+      operationId: capturePayment
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CaptureAction'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseResponse'
+          description: Response
+      tags:
+      - payment
+      x-contentType: application/x-www-form-urlencoded
+      x-accepts: application/json
   /token:
     post:
       description: Fetch session token
+      operationId: getSessionToken
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -21,6 +42,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/BaseResponse'
           description: Response
+      tags:
+      - token
       x-contentType: application/x-www-form-urlencoded
       x-accepts: application/json
 components:
@@ -59,27 +82,25 @@ components:
       - merchantId
       - password
       - timestamp
-      title: Capture
+      title: CaptureSession Token
       type: object
-    FOOSessionToken:
+    CaptureAction:
       properties:
         merchantId:
           example: 167885
           type: integer
-        password:
-          example: "56789"
+        token:
+          example: abcde12345abcde12345
           type: string
         action:
-          example: FOO
+          example: CAPTURE
           type: string
       required:
       - action
-      - allowOriginUrl
-      - amount
       - merchantId
       - password
-      - timestamp
-      title: Capture
+      - token
+      title: Capture Payment
       type: object
     TokenResponseProcessed:
       allOf:
